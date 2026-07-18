@@ -1,0 +1,33 @@
+# ---- Secrets (never commit) ----
+.env
+.env.*
+!.env.example
+
+# ---- Python ----
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.ipynb_checkpoints/
+
+# ---- Node / Vite (dashboard) ----
+node_modules/
+dist/
+.vite/
+# regenerated at build time from the xlsx by scripts/build-data.mjs
+churn-dashboard/src/data/predictions.json
+
+# ---- Netlify ----
+.netlify/
+
+# ---- OS / editor cruft ----
+.DS_Store
+Thumbs.db
+# MS Office lock/temp files (e.g. ~$Report.docx)
+~$*
+
+# ---- Logs ----
+*.log
+npm-debug.log*

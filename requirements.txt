@@ -1,0 +1,36 @@
+# Telco churn classification — Logistic Regression / Trees / LightGBM / XGBoost
+# + UMAP-HDBSCAN segmentation + SHAP attribution.
+#
+# Built for Python 3.11 (/opt/homebrew/bin/python3.11).
+#   python3.11 -m venv .venv && source .venv/bin/activate
+#   pip install -r requirements.txt
+
+# Core data handling
+numpy==2.4.6
+pandas==3.0.3
+openpyxl==3.1.5        # engine pandas uses for read_excel on the .xlsx source
+
+# Modeling
+scikit-learn==1.9.0    # also supplies HDBSCAN (sklearn.cluster) — no separate pkg
+xgboost==3.2.0
+lightgbm==4.6.0
+optuna==4.9.0          # hyperparameter search
+
+# Segmentation & explainability
+umap-learn==0.5.12     # pulls numba + pynndescent
+numba==0.66.0
+shap==0.51.0
+
+# Plotting
+matplotlib==3.11.0
+plotly==6.9.0
+kaleido==1.3.0         # optional: static image export only (fig.write_image)
+
+# Notebook kernel
+ipykernel==7.3.0
+nbformat==5.10.4       # required for plotly fig.show() to render inline in the
+                       # notebook; without it plotly raises "Mime type rendering
+                       # requires nbformat>=4.2.0"
+
+# LLM layer (segment retention recommendations) — needs GROQ_API_KEY in the env
+groq==1.5.0

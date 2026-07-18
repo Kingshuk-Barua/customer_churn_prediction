@@ -1,0 +1,14 @@
+# Netlify build config. The React app lives in the churn-dashboard/ subfolder.
+# Netlify clones the whole repo, then cd's into `base` to build — so the build
+# script can still reach ../telco_test_predictions.xlsx at the repo root and
+# regenerate src/data/predictions.json via the `prebuild` hook.
+[build]
+  base = "churn-dashboard"
+  command = "npm run build"
+  publish = "dist"          # relative to base -> churn-dashboard/dist
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# No SPA redirect rule is needed: the app uses hash-based routing
+# (createHashRouter), so all routes live under a single index.html.
