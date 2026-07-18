@@ -5,7 +5,7 @@
 // bundle small and the runtime free of a spreadsheet parser. Re-run happens
 // automatically via the `predev` / `prebuild` npm hooks.
 import * as XLSX from "xlsx";
-import { readFileSync, writeFileSync, existsSync } from "node:fs";
+import { readFileSync, writeFileSync, existsSync, mkdirSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, resolve } from "node:path";
 
@@ -51,6 +51,8 @@ const clean = rows.map((r, i) => {
 
 const outDir = resolve(__dirname, "../src/data");
 const out = resolve(outDir, "predictions.json");
+// Git doesn't track empty dirs, so src/data/ may not exist on a fresh clone (Netlify).
+mkdirSync(outDir, { recursive: true });
 writeFileSync(out, JSON.stringify(clean, null, 0));
 console.log(
   `[build:data] wrote ${clean.length} rows -> ${out} ` +
